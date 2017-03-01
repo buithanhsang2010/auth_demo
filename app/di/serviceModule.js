@@ -11,6 +11,7 @@ module.exports = class ServiceModule {
     return new ConfigService(...arguments)
   }
 
+  @Singleton
   @Provides('databaseService')
   provideDatabaseService(configService) {
     return new DatabaseService(...arguments)
