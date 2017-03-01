@@ -10,6 +10,11 @@ const Routers = require('./routers/routers.js')
 var express = require('express')
 var app = express()
 
-var dbInfo = appComponent.getDatabaseInfo()
+var config = appComponent.getConfigService()
+var dbInfo = config.getDatabaseInfo()
 var dbConn = appComponent.getDatabaseService(dbInfo).makeConnection()
 var routes = new Routers(appComponen.getAuthService(dbConn))
+
+app.listen(config.getPortServer(), function() {
+	console.log("Start authdemo server");
+})
