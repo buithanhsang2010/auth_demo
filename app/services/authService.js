@@ -1,7 +1,7 @@
 export default class AuthService {
 
-	constructor(databaseConn) {
-		this.databaseConn = databaseConn;
+	constructor(databaseService) {
+		this.dbConn = databaseService.makeConnection();
 	}
 
 	verifyToken(token) {
@@ -9,10 +9,10 @@ export default class AuthService {
 	}
 
 	authenicate(user) {
-		var userIds = this.databaseConn('users').where(
+		var userIds = this.dbConn('users').where({
 			user_name: user.user_name,
 			password: user.password
-			).select('id')
+			}).select('id')
 
 		return userIds;
 	}

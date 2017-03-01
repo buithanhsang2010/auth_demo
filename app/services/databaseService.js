@@ -2,11 +2,12 @@ var Knex = require('knex');
 
 export default class DatabaseService {
 	
-	constructor(databaseInfo) {
-		this.databaseInfo = databaseInfo;
+	constructor(config) {
+		this.config = config;
 	}
 
 	makeConnection(){
-		return Knex(this.databaseInfo);
+		console.log(this.config.getDatabaseInfo());
+		return Knex(this.config.getDatabaseInfo());
 	}
 }

@@ -1,7 +1,12 @@
 export default class ConfigService {
 
 	getDatabaseInfo() {
-		return {filename: '../db/mydb.sqlite"'}
+		return {
+			  client: 'sqlite3',
+			  connection: {
+			    filename: "./mydb.sqlite"
+			  }
+			}
 	}
 
 	getPortServer() {
