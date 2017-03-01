@@ -1,5 +1,6 @@
-//const ConfigService = require('../services/configService')
-//const DatabaseService = require('../services/databaseService')
+const ConfigService = require('../services/configService')
+const DatabaseService = require('../services/databaseService')
+const AuthService = require('../services/authenService')
 
 @Module
 module.exports = class ServiceModule {
@@ -14,4 +15,9 @@ module.exports = class ServiceModule {
   provideDatabaseService(configService) {
     return new DatabaseService(...arguments)
   }
+
+   @Provides('authService')
+   provideAuthService(databaseConn) {
+   	return new DatabaseService(...arguments)
+   }
 }
